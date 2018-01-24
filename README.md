@@ -1,8 +1,9 @@
 # MJARProject
 
-
 ## To-Do ##
-- [ ] a
+- [ ] Firebase
+- [ ] API
+- [ ] AR
 
 ## Developer ##
 
