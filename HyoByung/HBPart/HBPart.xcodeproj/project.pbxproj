@@ -8,21 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		001FE0E1201C9C78001ED3AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 001FE0E0201C9C78001ED3AA /* GoogleService-Info.plist */; };
+		001FE0E3201C9ED9001ED3AA /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0E2201C9ED9001ED3AA /* CommentTableViewCell.swift */; };
+		001FE0E5201CA151001ED3AA /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0E4201CA151001ED3AA /* CommentTableViewController.swift */; };
+		001FE0E7201CA257001ED3AA /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0E6201CA257001ED3AA /* Comment.swift */; };
+		001FE0E9201CA919001ED3AA /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0E8201CA919001ED3AA /* RatingViewController.swift */; };
+		001FE0EB201CA952001ED3AA /* CommentWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0EA201CA952001ED3AA /* CommentWritingViewController.swift */; };
+		001FE0ED201CB337001ED3AA /* CommentPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0EC201CB337001ED3AA /* CommentPhotoViewController.swift */; };
+		001FE0EF201CB9ED001ED3AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001FE0EE201CB9ED001ED3AA /* Assets.xcassets */; };
 		00BC903B201C9B8D0042D99A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC903A201C9B8D0042D99A /* AppDelegate.swift */; };
 		00BC903D201C9B8D0042D99A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC903C201C9B8D0042D99A /* ViewController.swift */; };
 		00BC9040201C9B8D0042D99A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BC903E201C9B8D0042D99A /* Main.storyboard */; };
-		00BC9042201C9B8D0042D99A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00BC9041201C9B8D0042D99A /* Assets.xcassets */; };
 		00BC9045201C9B8D0042D99A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BC9043201C9B8D0042D99A /* LaunchScreen.storyboard */; };
 		D4204638CD8D833F7B56E86D /* Pods_HBPart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3E1200F9A80740331EEB58 /* Pods_HBPart.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		001FE0E0201C9C78001ED3AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		001FE0E2201C9ED9001ED3AA /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		001FE0E4201CA151001ED3AA /* CommentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
+		001FE0E6201CA257001ED3AA /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		001FE0E8201CA919001ED3AA /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		001FE0EA201CA952001ED3AA /* CommentWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentWritingViewController.swift; sourceTree = "<group>"; };
+		001FE0EC201CB337001ED3AA /* CommentPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPhotoViewController.swift; sourceTree = "<group>"; };
+		001FE0EE201CB9ED001ED3AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		00BC9037201C9B8D0042D99A /* HBPart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBPart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00BC903A201C9B8D0042D99A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00BC903C201C9B8D0042D99A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00BC903F201C9B8D0042D99A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		00BC9041201C9B8D0042D99A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00BC9044201C9B8D0042D99A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00BC9046201C9B8D0042D99A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		226939BE5197EF8F32A096D4 /* Pods-HBPart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBPart.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBPart/Pods-HBPart.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,11 +77,17 @@
 			children = (
 				00BC903A201C9B8D0042D99A /* AppDelegate.swift */,
 				00BC903C201C9B8D0042D99A /* ViewController.swift */,
+				001FE0E4201CA151001ED3AA /* CommentTableViewController.swift */,
+				001FE0EC201CB337001ED3AA /* CommentPhotoViewController.swift */,
 				00BC903E201C9B8D0042D99A /* Main.storyboard */,
-				00BC9041201C9B8D0042D99A /* Assets.xcassets */,
+				001FE0EA201CA952001ED3AA /* CommentWritingViewController.swift */,
+				001FE0EE201CB9ED001ED3AA /* Assets.xcassets */,
 				00BC9043201C9B8D0042D99A /* LaunchScreen.storyboard */,
 				00BC9046201C9B8D0042D99A /* Info.plist */,
 				001FE0E0201C9C78001ED3AA /* GoogleService-Info.plist */,
+				001FE0E2201C9ED9001ED3AA /* CommentTableViewCell.swift */,
+				001FE0E6201CA257001ED3AA /* Comment.swift */,
+				001FE0E8201CA919001ED3AA /* RatingViewController.swift */,
 			);
 			path = HBPart;
 			sourceTree = "<group>";
@@ -155,7 +173,7 @@
 			files = (
 				00BC9045201C9B8D0042D99A /* LaunchScreen.storyboard in Resources */,
 				001FE0E1201C9C78001ED3AA /* GoogleService-Info.plist in Resources */,
-				00BC9042201C9B8D0042D99A /* Assets.xcassets in Resources */,
+				001FE0EF201CB9ED001ED3AA /* Assets.xcassets in Resources */,
 				00BC9040201C9B8D0042D99A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,12 +206,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HBPart/Pods-HBPart-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -225,7 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				001FE0E7201CA257001ED3AA /* Comment.swift in Sources */,
 				00BC903D201C9B8D0042D99A /* ViewController.swift in Sources */,
+				001FE0E3201C9ED9001ED3AA /* CommentTableViewCell.swift in Sources */,
+				001FE0E9201CA919001ED3AA /* RatingViewController.swift in Sources */,
+				001FE0EB201CA952001ED3AA /* CommentWritingViewController.swift in Sources */,
+				001FE0E5201CA151001ED3AA /* CommentTableViewController.swift in Sources */,
+				001FE0ED201CB337001ED3AA /* CommentPhotoViewController.swift in Sources */,
 				00BC903B201C9B8D0042D99A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
