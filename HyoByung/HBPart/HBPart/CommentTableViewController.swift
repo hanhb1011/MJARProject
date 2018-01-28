@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class CommentTableViewController: UITableViewController {
     var comments : [Comment] = []
@@ -47,13 +48,25 @@ class CommentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as!CommentTableViewCell
-        var comment = comments[indexPath.row]
+        let comment = comments[indexPath.row]
         
         cell.titleLabel.text = comment.title!
         cell.ratingLabel.text = String(comment.rating!)
         cell.dateLabel.text = comment.date!
         cell.commentLabel.text = comment.comment!
         
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child(comment.commentId!+".png")
+        storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                // default image
+            } else {
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data!)
+                    cell.commentImageView?.image = image
+                }
+            }
+        }
         return cell
     }
     
@@ -64,7 +77,10 @@ class CommentTableViewController: UITableViewController {
         
         //receive data from server
         ref.observe(.value) { snapshot in
-            let root : NSDictionary = snapshot.value as! NSDictionary
+            
+            guard let root : NSDictionary = snapshot.value as? NSDictionary else {
+                return
+            }
             let dataset = root.allValues
             for data in dataset {
                 let dict = data as! NSDictionary
@@ -85,14 +101,17 @@ class CommentTableViewController: UITableViewController {
             }
             
             //and update ui
-            if self.comments.count > 0 {
-                self.averageRating /= Double(self.comments.count)
-                self.averageRatingLabel.text = "Average : \(round(self.averageRating*100)/100)"
-                self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                if self.comments.count > 0 {
+                    self.tableView.reloadData()
+                    self.averageRating /= Double(self.comments.count)
+                    self.averageRatingLabel.text = "Average : \(round(self.averageRating*10)/10)"
+                    
+                }
             }
         }
-        
-        
+
     }
 
     
@@ -140,5 +159,4 @@ class CommentTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
