@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CommentPhotoViewController: UIViewController {
     
@@ -14,11 +15,15 @@ class CommentPhotoViewController: UIViewController {
     
     @IBOutlet weak var testLabel: UILabel!
     @IBAction func submitClicked(_ sender: Any) {
-        
-        
-        
-        
-        
+        var ref: DatabaseReference! = Database.database().reference().child("comments").childByAutoId()
+        CommentPhotoViewController.comment.commentId = ref.key
+        CommentPhotoViewController.comment.uid="temp"
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        CommentPhotoViewController.comment.date = formatter.string(from: Date())
+        ref.setValue(CommentPhotoViewController.comment.toDictionary())
+    
     }
     
     override func viewDidLoad() {
