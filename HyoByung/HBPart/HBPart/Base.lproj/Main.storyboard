@@ -18,8 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="4hQ-Cl-1g9">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-p1-vDP">
+                                    <rect key="frame" x="8" y="15" width="359" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="PKU-dH-UU1">
-                            <rect key="frame" x="0.0" y="158" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="202" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rik-IG-efL">
@@ -35,7 +49,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" id="1Up-ww-bN7" customClass="CommentTableViewCell" customModule="HBPart" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="130"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Up-ww-bN7" id="XJx-6E-9Ku">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
@@ -89,6 +103,9 @@
                             <outlet property="delegate" destination="3PB-t4-SJH" id="GTQ-rI-kV6"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="averageRatingLabel" destination="aDn-p1-vDP" id="Dna-tE-1Oz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBx-QS-d5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
