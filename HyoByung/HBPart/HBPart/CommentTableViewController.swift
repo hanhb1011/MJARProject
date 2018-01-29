@@ -13,10 +13,14 @@ import FirebaseStorage
 class CommentTableViewController: UITableViewController {
     var comments : [Comment] = []
     var averageRating : Double = 0.0
+    
     @IBOutlet weak var averageRatingLabel: UILabel!
+    @IBOutlet weak var numOfCommentsLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         getDataFromServer()
         
@@ -106,10 +110,11 @@ class CommentTableViewController: UITableViewController {
                 if self.comments.count > 0 {
                     self.tableView.reloadData()
                     self.averageRating /= Double(self.comments.count)
-                    self.averageRatingLabel.text = "Average : \(round(self.averageRating*10)/10)"
-                    
+                    self.averageRatingLabel.text = "\(round(self.averageRating*10)/10)"
+                    self.numOfCommentsLabel.text = "\(self.comments.count)"
                 }
             }
+            self.activityIndicator.stopAnimating()
         }
 
     }

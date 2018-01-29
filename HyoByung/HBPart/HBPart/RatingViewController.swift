@@ -13,6 +13,10 @@ class RatingViewController: UIViewController {
 
     @IBOutlet weak var ratingView: CosmosView!
     
+    @IBAction func backButtonClicked(_ sender: Any) {
+        
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -8,31 +8,55 @@
 
 import UIKit
 
-class CommentWritingViewController: UIViewController {
+class CommentWritingViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var placeholderLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        placeholderLabel.text = "내용"
+        
         commentTextView!.layer.borderWidth = 1
         commentTextView!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        commentTextView.delegate = self
+        commentTextView.textContainer.maximumNumberOfLines = 3
+        
         titleTextField!.layer.borderWidth = 1
         titleTextField!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        titleTextField.delegate = self
+        
         passwordTextField!.layer.borderWidth = 1
         passwordTextField!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        commentTextView.text = "Comment"
-        commentTextView.textColor = UIColor.lightGray
+        passwordTextField.delegate = self
+        
     }
-
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= 15
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let str = textView.text else { return true }
+        let newLength = str.characters.count + text.characters.count - range.length
+        return newLength <= 50
+    }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        placeholderLabel.isHidden = !commentTextView.text.isEmpty
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     
     // MARK: - Navigation
 

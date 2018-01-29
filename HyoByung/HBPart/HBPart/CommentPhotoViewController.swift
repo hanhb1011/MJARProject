@@ -14,6 +14,7 @@ class CommentPhotoViewController: UIViewController {
     
     static var comment : Comment = Comment()
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var commentImageView: UIImageView!
 
     @IBAction func pickAnImage(_ sender: Any) {
@@ -21,6 +22,8 @@ class CommentPhotoViewController: UIViewController {
     }
     
     @IBAction func submitClicked(_ sender: Any) {
+        //show the activity indicator
+        activityIndicator.startAnimating()
         
         //comment data upload
         let ref: DatabaseReference! = Database.database().reference().child("comments").childByAutoId()
@@ -38,13 +41,9 @@ class CommentPhotoViewController: UIViewController {
             let storage = Storage.storage()
             let storageRef = storage.reference().child(ref.key+".png")
             storageRef.putData(image, metadata: nil){ metadata, error in
-                if error != nil {
-                    
-                } else {
-                    //TODO : dismisss
-                    
-                    
-                }
+
+                self.navigationController?.dismiss(animated: true, completion: nil)
+                
             }
             
         }
@@ -52,7 +51,6 @@ class CommentPhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -85,7 +83,7 @@ extension CommentPhotoViewController : UIImagePickerControllerDelegate, UINaviga
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let originalImage = info["UIImagePickerControllerOriginalImage"] {
-            var image = originalImage as! UIImage
+            let image = originalImage as! UIImage
             let resizedImage = image.crop(to: CGSize(width: 300.0, height: 300.0))
             self.commentImageView.image = resizedImage
             self.commentImageView.contentMode = .scaleToFill
