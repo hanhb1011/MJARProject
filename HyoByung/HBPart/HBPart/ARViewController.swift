@@ -31,12 +31,13 @@ class ARViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        if textField.text!.count > 0 {
-            
-            CommentTableViewController.restaurantId = textField.text
-            
+        if segue.identifier == "restaurantInfoFromAR" {
+            if textField.text!.count > 0 {
+                let destination = segue.destination as! CommentTableViewController
+                CommentTableViewController.restaurantId = textField.text
+                
+            }
         }
-        
     }
  
 

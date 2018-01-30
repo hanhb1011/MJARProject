@@ -10,5 +10,6 @@ import UIKit
 
 class FavoritesTableViewCell: UITableViewCell {
 
-
+    @IBOutlet weak var testLabel: UILabel!
+    
 }

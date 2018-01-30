@@ -10,7 +10,13 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
+protocol FavoritesDelegate {
+    func refreshFavoritesTable()
+}
+
+
 class CommentTableViewController: UITableViewController {
+    var favoritesDelegate : FavoritesDelegate?
     var comments : [Comment] = []
     var averageRating : Double = 0.0
     var isFavorite : Bool = false
@@ -23,6 +29,9 @@ class CommentTableViewController: UITableViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     
     @IBAction func exitButtonClicked(_ sender: Any) {
+        
+        self.favoritesDelegate?.refreshFavoritesTable()
+    
         dismiss(animated: true, completion: nil)
     }
     
@@ -40,7 +49,6 @@ class CommentTableViewController: UITableViewController {
                 dict[CommentTableViewController.restaurantId] = nil
                 NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
                 
-                print(dict)
             }
             
             
@@ -53,7 +61,6 @@ class CommentTableViewController: UITableViewController {
                 dict[CommentTableViewController.restaurantId] = ["key":"val"]
                 NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
                 
-                print(dict)
             } else {
                 var dict = [String:[String:String]]() //temp
                 dict[CommentTableViewController.restaurantId] = ["key":"val"]
