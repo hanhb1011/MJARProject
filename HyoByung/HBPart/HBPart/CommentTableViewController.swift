@@ -13,16 +13,73 @@ import FirebaseStorage
 class CommentTableViewController: UITableViewController {
     var comments : [Comment] = []
     var averageRating : Double = 0.0
+    var isFavorite : Bool = false
+    static var restaurantId : String! = "default"
+    let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!+"restaurantData.dat"
     
     @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var numOfCommentsLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    @IBAction func exitButtonClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func likeButtonClicked(_ sender: Any) {
+        
+        guard let button = sender as? UIButton else {
+            return
+        }
+        
+        if self.isFavorite {
+            button.setImage(UIImage(named: "whitestar32"), for: .normal)
+            
+            if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
+                var dict = dataReceived as! [String:[String:String]] //temp
+                dict[CommentTableViewController.restaurantId] = nil
+                NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
+                
+                print(dict)
+            }
+            
+            
+            self.isFavorite = false
+        } else {
+            button.setImage(UIImage(named : "icons8-star-32.png"), for: .normal)
+            
+            if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
+                var dict = dataReceived as! [String:[String:String]] //temp
+                dict[CommentTableViewController.restaurantId] = ["key":"val"]
+                NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
+                
+                print(dict)
+            } else {
+                var dict = [String:[String:String]]() //temp
+                dict[CommentTableViewController.restaurantId] = ["key":"val"]
+                NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
+            }
+            
+            
+            self.isFavorite = true
+        }
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         getDataFromServer()
+        
+        if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
+            var dict = dataReceived as! [String:[String:String]]
+            if dict[CommentTableViewController.restaurantId] != nil {
+                self.isFavorite = true
+                self.favoriteButton.setImage(UIImage(named : "icons8-star-32.png"), for: .normal)
+            }
+        }
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -72,17 +129,19 @@ class CommentTableViewController: UITableViewController {
             }
         }
         return cell
+        
     }
     
     func getDataFromServer(){
         
         var ref: DatabaseReference!
-        ref = Database.database().reference().child("comments")
+        ref = Database.database().reference().child("comments").child(CommentTableViewController.restaurantId)
         
         //receive data from server
         ref.observe(.value) { snapshot in
             
             guard let root : NSDictionary = snapshot.value as? NSDictionary else {
+                self.activityIndicator.stopAnimating()
                 return
             }
             let dataset = root.allValues

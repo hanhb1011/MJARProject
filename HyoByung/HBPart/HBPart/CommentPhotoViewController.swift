@@ -26,7 +26,7 @@ class CommentPhotoViewController: UIViewController {
         activityIndicator.startAnimating()
         
         //comment data upload
-        let ref: DatabaseReference! = Database.database().reference().child("comments").childByAutoId()
+        let ref: DatabaseReference! = Database.database().reference().child("comments").child(CommentTableViewController.restaurantId).childByAutoId()
         CommentPhotoViewController.comment.commentId = ref.key
         CommentPhotoViewController.comment.uid="temp"
         let formatter = DateFormatter()
