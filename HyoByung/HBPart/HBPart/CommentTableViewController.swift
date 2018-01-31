@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 import SVProgressHUD
-
+import PINRemoteImage
 
 class CommentTableViewController: UITableViewController {
     var comments : [Comment] = []
@@ -32,6 +32,7 @@ class CommentTableViewController: UITableViewController {
         guard let button = sender as? UIButton else {
             return
         }
+        
         if self.isFavorite {
             button.setImage(UIImage(named: "whitestar32"), for: .normal)
             
