@@ -9,6 +9,9 @@
 import UIKit
 
 class ARViewController: UIViewController {
+    func refreshFavoritesTable() {
+	
+    }
 
     @IBOutlet weak var textField: UITextField!
     
@@ -34,8 +37,7 @@ class ARViewController: UIViewController {
         if segue.identifier == "restaurantInfoFromAR" {
             if textField.text!.count > 0 {
                 let destination = segue.destination as! CommentTableViewController
-                CommentTableViewController.restaurantId = textField.text
-                
+                CommentTableViewController.restaurantId = textField.text	
             }
         }
     }

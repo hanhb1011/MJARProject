@@ -14,7 +14,6 @@
 		001FE0E9201CA919001ED3AA /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0E8201CA919001ED3AA /* RatingViewController.swift */; };
 		001FE0EB201CA952001ED3AA /* CommentWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0EA201CA952001ED3AA /* CommentWritingViewController.swift */; };
 		001FE0ED201CB337001ED3AA /* CommentPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FE0EC201CB337001ED3AA /* CommentPhotoViewController.swift */; };
-		001FE0EF201CB9ED001ED3AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001FE0EE201CB9ED001ED3AA /* Assets.xcassets */; };
 		0042E4A0201F592A0034140E /* CommentDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042E49F201F592A0034140E /* CommentDeletionViewController.swift */; };
 		0042E4A2202044680034140E /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042E4A1202044680034140E /* ARViewController.swift */; };
 		0042E4A4202044AD0034140E /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042E4A3202044AD0034140E /* FavoritesTableViewController.swift */; };
@@ -23,6 +22,7 @@
 		00BC903D201C9B8D0042D99A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC903C201C9B8D0042D99A /* ViewController.swift */; };
 		00BC9040201C9B8D0042D99A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BC903E201C9B8D0042D99A /* Main.storyboard */; };
 		00BC9045201C9B8D0042D99A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BC9043201C9B8D0042D99A /* LaunchScreen.storyboard */; };
+		9D5B6EE5202211950068ECFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D5B6EE4202211950068ECFB /* Assets.xcassets */; };
 		D4204638CD8D833F7B56E86D /* Pods_HBPart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3E1200F9A80740331EEB58 /* Pods_HBPart.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,6 @@
 		001FE0E8201CA919001ED3AA /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		001FE0EA201CA952001ED3AA /* CommentWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentWritingViewController.swift; sourceTree = "<group>"; };
 		001FE0EC201CB337001ED3AA /* CommentPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPhotoViewController.swift; sourceTree = "<group>"; };
-		001FE0EE201CB9ED001ED3AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		0042E49F201F592A0034140E /* CommentDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDeletionViewController.swift; sourceTree = "<group>"; };
 		0042E4A1202044680034140E /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		0042E4A3202044AD0034140E /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		00BC9046201C9B8D0042D99A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		226939BE5197EF8F32A096D4 /* Pods-HBPart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBPart.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBPart/Pods-HBPart.release.xcconfig"; sourceTree = "<group>"; };
 		4D3E1200F9A80740331EEB58 /* Pods_HBPart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBPart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D5B6EE4202211950068ECFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8B66BF1DA4082BE018F5B92 /* Pods-HBPart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBPart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HBPart/Pods-HBPart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,7 +92,7 @@
 				0042E4A3202044AD0034140E /* FavoritesTableViewController.swift */,
 				0042E49F201F592A0034140E /* CommentDeletionViewController.swift */,
 				001FE0EA201CA952001ED3AA /* CommentWritingViewController.swift */,
-				001FE0EE201CB9ED001ED3AA /* Assets.xcassets */,
+				9D5B6EE4202211950068ECFB /* Assets.xcassets */,
 				00BC9043201C9B8D0042D99A /* LaunchScreen.storyboard */,
 				00BC9046201C9B8D0042D99A /* Info.plist */,
 				001FE0E0201C9C78001ED3AA /* GoogleService-Info.plist */,
@@ -185,8 +185,8 @@
 			files = (
 				00BC9045201C9B8D0042D99A /* LaunchScreen.storyboard in Resources */,
 				001FE0E1201C9C78001ED3AA /* GoogleService-Info.plist in Resources */,
-				001FE0EF201CB9ED001ED3AA /* Assets.xcassets in Resources */,
 				00BC9040201C9B8D0042D99A /* Main.storyboard in Resources */,
+				9D5B6EE5202211950068ECFB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,16 +219,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HBPart/Pods-HBPart-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

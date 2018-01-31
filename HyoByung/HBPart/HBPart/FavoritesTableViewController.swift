@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesTableViewController: UITableViewController, FavoritesDelegate {
+class FavoritesTableViewController: UITableViewController {
     
     var favoritesData : [Any] = []
     
@@ -19,9 +19,6 @@ class FavoritesTableViewController: UITableViewController, FavoritesDelegate {
         
     }
     
-    func refreshFavoritesTable() {
-        getFavoritesData()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,6 +46,11 @@ class FavoritesTableViewController: UITableViewController, FavoritesDelegate {
         }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getFavoritesData()
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as! FavoritesTableViewCell
@@ -64,7 +66,6 @@ class FavoritesTableViewController: UITableViewController, FavoritesDelegate {
         if segue.identifier == "restaurantInfoFromFavorites" {
             if let index = self.tableView.indexPathForSelectedRow?.row {
                 if let destination = segue.destination as? CommentTableViewController, let data = favoritesData[index] as? (String, NSDictionary){
-                    destination.favoritesDelegate = self
                     CommentTableViewController.restaurantId = data.0
                 }
             }

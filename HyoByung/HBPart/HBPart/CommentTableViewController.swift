@@ -9,14 +9,10 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
-
-protocol FavoritesDelegate {
-    func refreshFavoritesTable()
-}
+import SVProgressHUD
 
 
 class CommentTableViewController: UITableViewController {
-    var favoritesDelegate : FavoritesDelegate?
     var comments : [Comment] = []
     var averageRating : Double = 0.0
     var isFavorite : Bool = false
@@ -25,13 +21,9 @@ class CommentTableViewController: UITableViewController {
     
     @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var numOfCommentsLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var favoriteButton: UIButton!
     
     @IBAction func exitButtonClicked(_ sender: Any) {
-        
-        self.favoritesDelegate?.refreshFavoritesTable()
-    
         dismiss(animated: true, completion: nil)
     }
     
@@ -40,7 +32,6 @@ class CommentTableViewController: UITableViewController {
         guard let button = sender as? UIButton else {
             return
         }
-        
         if self.isFavorite {
             button.setImage(UIImage(named: "whitestar32"), for: .normal)
             
@@ -141,14 +132,17 @@ class CommentTableViewController: UITableViewController {
     
     func getDataFromServer(){
         
+        SVProgressHUD.show()
+        
         var ref: DatabaseReference!
         ref = Database.database().reference().child("comments").child(CommentTableViewController.restaurantId)
         
         //receive data from server
         ref.observe(.value) { snapshot in
             
+            SVProgressHUD.dismiss()
+            
             guard let root : NSDictionary = snapshot.value as? NSDictionary else {
-                self.activityIndicator.stopAnimating()
                 return
             }
             let dataset = root.allValues
@@ -180,54 +174,10 @@ class CommentTableViewController: UITableViewController {
                     self.numOfCommentsLabel.text = "\(self.comments.count)"
                 }
             }
-            self.activityIndicator.stopAnimating()
+            
         }
 
     }
 
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 }
