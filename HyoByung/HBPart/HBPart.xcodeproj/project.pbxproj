@@ -23,6 +23,8 @@
 		00BC903D201C9B8D0042D99A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC903C201C9B8D0042D99A /* ViewController.swift */; };
 		00BC9040201C9B8D0042D99A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BC903E201C9B8D0042D99A /* Main.storyboard */; };
 		00BC9045201C9B8D0042D99A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BC9043201C9B8D0042D99A /* LaunchScreen.storyboard */; };
+		1A249E3A202837B900108191 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A249E39202837B900108191 /* GoogleService-Info.plist */; };
+		1A249E3C20283E3000108191 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A249E3B20283E3000108191 /* RestaurantTableViewCell.swift */; };
 		9D5B6EE5202211950068ECFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D5B6EE4202211950068ECFB /* Assets.xcassets */; };
 		D4204638CD8D833F7B56E86D /* Pods_HBPart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3E1200F9A80740331EEB58 /* Pods_HBPart.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		00BC903F201C9B8D0042D99A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00BC9044201C9B8D0042D99A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00BC9046201C9B8D0042D99A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A249E39202837B900108191 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1A249E3B20283E3000108191 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		226939BE5197EF8F32A096D4 /* Pods-HBPart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBPart.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBPart/Pods-HBPart.release.xcconfig"; sourceTree = "<group>"; };
 		4D3E1200F9A80740331EEB58 /* Pods_HBPart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBPart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5B6EE4202211950068ECFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,8 +92,10 @@
 				00BC903A201C9B8D0042D99A /* AppDelegate.swift */,
 				00BC903C201C9B8D0042D99A /* ViewController.swift */,
 				001FE0E4201CA151001ED3AA /* CommentTableViewController.swift */,
+				1A249E39202837B900108191 /* GoogleService-Info.plist */,
 				001FE0EC201CB337001ED3AA /* CommentPhotoViewController.swift */,
 				00BC903E201C9B8D0042D99A /* Main.storyboard */,
+				1A249E3B20283E3000108191 /* RestaurantTableViewCell.swift */,
 				0042E4A520206A8E0034140E /* FavoritesTableViewCell.swift */,
 				0042E4A3202044AD0034140E /* FavoritesTableViewController.swift */,
 				0042E49F201F592A0034140E /* CommentDeletionViewController.swift */,
@@ -188,6 +194,7 @@
 			files = (
 				00BC9045201C9B8D0042D99A /* LaunchScreen.storyboard in Resources */,
 				001FE0E1201C9C78001ED3AA /* GoogleService-Info.plist in Resources */,
+				1A249E3A202837B900108191 /* GoogleService-Info.plist in Resources */,
 				00BC9040201C9B8D0042D99A /* Main.storyboard in Resources */,
 				9D5B6EE5202211950068ECFB /* Assets.xcassets in Resources */,
 			);
@@ -282,6 +289,7 @@
 				001FE0E5201CA151001ED3AA /* CommentTableViewController.swift in Sources */,
 				001FE0ED201CB337001ED3AA /* CommentPhotoViewController.swift in Sources */,
 				00BC903B201C9B8D0042D99A /* AppDelegate.swift in Sources */,
+				1A249E3C20283E3000108191 /* RestaurantTableViewCell.swift in Sources */,
 				0042E4A2202044680034140E /* ARViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

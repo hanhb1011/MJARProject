@@ -25,7 +25,7 @@ class DetailPlace{
         weekday_text = nil
         formatted_address = nil
         formatted_phone_number = nil
-        photos = nil
+        photos = []
     }
     
 }

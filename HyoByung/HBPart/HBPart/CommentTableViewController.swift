@@ -14,16 +14,61 @@ import PINRemoteImage
 
 class CommentTableViewController: UITableViewController {
     var comments : [Comment] = []
+    var restaurantInfos : [(Int,String)] = []
     var averageRating : Double = 0.0
     var isFavorite : Bool = false
     static var restaurantId : String! = "default"
     let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!+"restaurantData.dat"
     
+    @IBOutlet var restaurantImageView: UIImageView!
+    @IBOutlet var restaurantTitleLabel: UILabel!
     @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var numOfCommentsLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        SVProgressHUD.show()
+        let places = getPlaceInfos(lat: "37.557772", lng: "127.000706")
+        let detailPlace = getDetailPlace(places[1].place_id)
+        if let str = detailPlace.name {
+            restaurantTitleLabel.text = str
+        }
+        if let str = detailPlace.formatted_address {
+            restaurantInfos.append((0, str))
+        }
+        if let str = detailPlace.formatted_phone_number {
+            restaurantInfos.append((1, str))
+        }
+        if let str = detailPlace.weekday_text {
+            restaurantInfos.append((2, str.reduce("", {$0+$1+"\n"})))
+        }
+        if let photos = detailPlace.photos {
+            let urls = getPhotoUrl(photos: photos)
+            if urls.count > 0 {
+                restaurantImageView.pin_setImage(from: URL(string: urls[0]))
+            }
+        }
+        tableView.reloadData()
+        
+        getDataFromServer()
+        
+        if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
+            var dict = dataReceived as! [String:[String:String]]
+            if dict[CommentTableViewController.restaurantId] != nil {
+                self.isFavorite = true
+                self.favoriteButton.setImage(UIImage(named : "icons8-star-32.png"), for: .normal)
+            }
+        }
+        
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
     
     @IBAction func exitButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -68,35 +113,9 @@ class CommentTableViewController: UITableViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        SVProgressHUD.show()
-        let places = getPlaceInfos(lat: "37.557772", lng: "127.000706")
-        let detailPlace = getDetailPlace(places[1].place_id)
-        print(detailPlace)
-        
-        
-        getDataFromServer()
-        
-        if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
-            var dict = dataReceived as! [String:[String:String]]
-            if dict[CommentTableViewController.restaurantId] != nil {
-                self.isFavorite = true
-                self.favoriteButton.setImage(UIImage(named : "icons8-star-32.png"), for: .normal)
-            }
-        }
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
     
-    func getPlaceInfos(lat: String, lng: String) -> [PlaceInfo]{
+    
+    func getPlaceInfos(lat: String, lng: String) -> [PlaceInfo] {
         var placeInfos :[PlaceInfo] = []
         var fullUrl :String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&language=ko&radius=500&type=restaurant&key=AIzaSyCzY5m4aopjsOKjpDJOEFMLdY9Tl0ZlF2Y"
         
@@ -125,7 +144,6 @@ class CommentTableViewController: UITableViewController {
                             if let lng = location["lng"] as? Double {
                                 lng1 = String(lng)
                             }
-                            
                             
                         }
                     }
@@ -224,43 +242,76 @@ class CommentTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return comments.count
+        if section == 0 {
+            return restaurantInfos.count
+        } else {
+            return comments.count
+        }
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if restaurantInfos[indexPath.row].0 == 2 {
+                return 130
+            } else{
+                return 40
+            }
+        } else {
+            return 100
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as!CommentTableViewCell
-        let comment = comments[indexPath.row]
         
-        cell.titleLabel.text = comment.title!
-        cell.ratingLabel.text = String(comment.rating!)
-        cell.dateLabel.text = comment.date!
-        cell.commentLabel.text = comment.comment!
-        
-        let storage = Storage.storage()
-        let storageRef = storage.reference().child(comment.commentId!+".png")
-        storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                // default image
-            } else {
-                DispatchQueue.main.async {
-                    let image = UIImage(data: data!)
-                    cell.commentImageView?.image = image
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as!CommentTableViewCell
+            let comment = comments[indexPath.row]
+            
+            cell.titleLabel.text = comment.title!
+            cell.ratingLabel.text = String(comment.rating!)
+            cell.dateLabel.text = comment.date!
+            cell.commentLabel.text = comment.comment!
+            
+            let storage = Storage.storage()
+            let storageRef = storage.reference().child(comment.commentId!+".png")
+            storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    // default image
+                } else {
+                    DispatchQueue.main.async {
+                        let image = UIImage(data: data!)
+                        cell.commentImageView?.image = image
+                    }
                 }
             }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as!RestaurantTableViewCell
+            
+            let info :(Int, String) = restaurantInfos[indexPath.row]
+            
+            if info.0 == 0 {
+                cell.iconImageView.image = UIImage(named : "if_icon-ios7-location-outline_211766.png")
+            } else if info.0 == 1 {
+                cell.iconImageView.image = UIImage(named : "if_icon-ios7-telephone-outline_211829.png")
+            } else {
+                cell.iconImageView.image = UIImage(named : "if_icon-ios7-clock-outline_211606.png")
+            }
+            
+            cell.infoLabel.text = info.1
+            cell.infoLabel.sizeToFit()
+            return cell
         }
-        return cell
-        
     }
     
     func getDataFromServer(){
@@ -309,8 +360,8 @@ class CommentTableViewController: UITableViewController {
             }
             
         }
-
+        
     }
-
-  
+    
+    
 }
