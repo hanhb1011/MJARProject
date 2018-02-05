@@ -23,6 +23,8 @@ class CommentTableViewController: UITableViewController {
     @IBOutlet weak var numOfCommentsLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
+    
+    
     @IBAction func exitButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -69,6 +71,11 @@ class CommentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SVProgressHUD.show()
+        let places = getPlaceInfos(lat: "37.557772", lng: "127.000706")
+        let detailPlace = getDetailPlace(places[1].place_id)
+        print(detailPlace)
+        
         
         getDataFromServer()
         
@@ -88,6 +95,131 @@ class CommentTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    func getPlaceInfos(lat: String, lng: String) -> [PlaceInfo]{
+        var placeInfos :[PlaceInfo] = []
+        var fullUrl :String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&language=ko&radius=500&type=restaurant&key=AIzaSyCzY5m4aopjsOKjpDJOEFMLdY9Tl0ZlF2Y"
+        
+        let url = URL(string: fullUrl)
+        var datalist = NSDictionary()
+        
+        do {
+            datalist = try JSONSerialization.jsonObject(with:Data(contentsOf : url!), options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+        }  catch {
+            print("Error loading Data")
+        }
+        
+        if let restaurants = datalist["results"] as? NSArray {
+            for res in restaurants {
+                if let restaurant = res as? NSDictionary {
+                    var lat1 : String = ""
+                    var lng1 : String = ""
+                    var place_id1 : String = ""
+                    
+                    if let geometry = restaurant["geometry"] as? NSDictionary {
+                        if let location = geometry["location"] as? NSDictionary {
+                            if let lat = location["lat"] as? Double {
+                                lat1 = String(lat)
+                            }
+                            
+                            if let lng = location["lng"] as? Double {
+                                lng1 = String(lng)
+                            }
+                            
+                            
+                        }
+                    }
+                    
+                    if let place_id = restaurant["place_id"] as? String {
+                        place_id1 = place_id
+                    }
+                    
+                    placeInfos += [PlaceInfo(lat1, lng1, place_id1)]
+                }
+            }
+        }
+        
+        
+        return placeInfos
+    }
+    
+    func getDetailPlace(_ place_id : String) -> DetailPlace {
+        let place = DetailPlace()
+        let fullUrl :String = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&language=ko&key=AIzaSyBmMU_ZnsgsjuCk5VAEoeRMt8DzMtj_Z5M"
+        let url = URL(string: fullUrl)
+        var datalist = NSDictionary()
+        
+        do {
+            datalist = try JSONSerialization.jsonObject(with:Data(contentsOf : url!), options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+        }  catch {
+            print("Error loading Data")
+        }
+        if let result = datalist["result"] as? NSDictionary {
+            if let name = result["name"] as? String {
+                place.name = name
+            }
+            
+            if let formatted_address = result["formatted_address"] as? String {
+                place.formatted_address = formatted_address
+            }
+            
+            if let formatted_phone_number = result["formatted_phone_number"] as? String {
+                place.formatted_phone_number = formatted_phone_number
+            }
+            
+            if let opening_hours = result["opening_hours"] as? NSDictionary {
+                if let open_now = opening_hours["open_now"] as? Bool {
+                    place.open_now = open_now
+                }
+                
+                if let weekday_text = opening_hours["weekday_text"] as? [String] {
+                    place.weekday_text = weekday_text
+                }
+            }
+            
+            if let vicinity = result["vicinity"] as? String {
+                place.vicinity = vicinity
+            }
+            
+            if let photos = result["photos"] as? NSArray {
+                for ph in photos {
+                    if let photo = ph as? NSDictionary {
+                        var height1 :String? = nil
+                        if let height = photo["height"] as? Int {
+                            height1 = String(height)
+                        }
+                        var width1 :String? = nil
+                        if let width = photo["width"] as? Int {
+                            width1 = String(width)
+                        }
+                        var photo_reference1 :String? = nil
+                        if let photo_reference = photo["photo_reference"] as? String {
+                            photo_reference1 = photo_reference
+                        }
+                        
+                        if let height = height1, let width = width1, let photo_reference = photo_reference1 {
+                            place.photos?.append(Photo(height, width, photo_reference))
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        return place
+    }
+    
+    func getPhotoUrl(photos:[Photo]) -> [String] {
+        var urls :[String] = []
+        for photo in photos {
+            let url :String = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=" + photo.width + "&maxheight=" + photo.height +  "&photoreference=" + photo.photo_reference + "&key=AIzaSyCzY5m4aopjsOKjpDJOEFMLdY9Tl0ZlF2Y"
+            urls.append(url)
+        }
+        
+        return urls
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -133,7 +265,7 @@ class CommentTableViewController: UITableViewController {
     
     func getDataFromServer(){
         
-        SVProgressHUD.show()
+        
         
         var ref: DatabaseReference!
         ref = Database.database().reference().child("comments").child(CommentTableViewController.restaurantId)

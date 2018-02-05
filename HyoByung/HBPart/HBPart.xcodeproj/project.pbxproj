@@ -18,6 +18,7 @@
 		0042E4A2202044680034140E /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042E4A1202044680034140E /* ARViewController.swift */; };
 		0042E4A4202044AD0034140E /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042E4A3202044AD0034140E /* FavoritesTableViewController.swift */; };
 		0042E4A620206A8E0034140E /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042E4A520206A8E0034140E /* FavoritesTableViewCell.swift */; };
+		0088D2102028305100F1109F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0088D20F2028305100F1109F /* Model.swift */; };
 		00BC903B201C9B8D0042D99A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC903A201C9B8D0042D99A /* AppDelegate.swift */; };
 		00BC903D201C9B8D0042D99A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC903C201C9B8D0042D99A /* ViewController.swift */; };
 		00BC9040201C9B8D0042D99A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BC903E201C9B8D0042D99A /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		0042E4A1202044680034140E /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		0042E4A3202044AD0034140E /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		0042E4A520206A8E0034140E /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		0088D20F2028305100F1109F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		00BC9037201C9B8D0042D99A /* HBPart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBPart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00BC903A201C9B8D0042D99A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00BC903C201C9B8D0042D99A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				001FE0E6201CA257001ED3AA /* Comment.swift */,
 				001FE0E8201CA919001ED3AA /* RatingViewController.swift */,
 				0042E4A1202044680034140E /* ARViewController.swift */,
+				0088D20F2028305100F1109F /* Model.swift */,
 			);
 			path = HBPart;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				001FE0E3201C9ED9001ED3AA /* CommentTableViewCell.swift in Sources */,
 				001FE0E9201CA919001ED3AA /* RatingViewController.swift in Sources */,
 				0042E4A0201F592A0034140E /* CommentDeletionViewController.swift in Sources */,
+				0088D2102028305100F1109F /* Model.swift in Sources */,
 				0042E4A4202044AD0034140E /* FavoritesTableViewController.swift in Sources */,
 				001FE0EB201CA952001ED3AA /* CommentWritingViewController.swift in Sources */,
 				001FE0E5201CA151001ED3AA /* CommentTableViewController.swift in Sources */,
