@@ -14,29 +14,58 @@
         <scene sceneID="LW9-Nu-FRC">
             <objects>
                 <tableViewController id="a8Q-S1-oJ8" customClass="FavoritesTableViewController" customModule="HBPart" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5oc-QA-fYK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5oc-QA-fYK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCell" id="djg-pe-QC5" customClass="FavoritesTableViewCell" customModule="HBPart" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="djg-pe-QC5" id="ide-2W-Ewe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="restaurant id : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGL-Om-dDC">
-                                            <rect key="frame" x="16" y="13" width="343" height="46"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVb-rk-AsZ">
+                                            <rect key="frame" x="16" y="11" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image=" phone24" translatesAutoresizingMaskIntoConstraints="NO" id="dP2-VC-evr">
+                                            <rect key="frame" x="117" y="71" width="23.999999999999886" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="충무로쭈꾸미불고기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJJ-E1-q4D">
+                                            <rect key="frame" x="117" y="11" width="242" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="서울특별시 중구 필동1가 3-20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eS-Ga-FYo">
+                                            <rect key="frame" x="149" y="44" width="210" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location24" translatesAutoresizingMaskIntoConstraints="NO" id="um0-nb-o3o">
+                                            <rect key="frame" x="117" y="44" width="23.999999999999886" height="23.999999999999972"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="02-2279-0803" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apQ-tM-obl">
+                                            <rect key="frame" x="149" y="74" width="210" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="testLabel" destination="DGL-Om-dDC" id="h1r-uH-wCe"/>
+                                    <outlet property="addressLabel" destination="6eS-Ga-FYo" id="nD5-D4-JcG"/>
+                                    <outlet property="nameLabel" destination="IJJ-E1-q4D" id="Upw-3m-UgN"/>
+                                    <outlet property="phoneLabel" destination="apQ-tM-obl" id="ceK-ex-asa"/>
+                                    <outlet property="restaurantImageView" destination="SVb-rk-AsZ" id="M6I-tZ-SgN"/>
                                     <segue destination="3PB-t4-SJH" kind="show" identifier="restaurantInfoFromFavorites" id="2HW-Q3-Ds8"/>
                                 </connections>
                             </tableViewCell>
@@ -50,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzf-gX-lOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-986" y="43"/>
+            <point key="canvasLocation" x="-986.39999999999998" y="42.728635682158924"/>
         </scene>
         <!--TEST(AR)-->
         <scene sceneID="LgG-mH-xin">
@@ -565,6 +594,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name=" phone24" width="24" height="24"/>
         <image name="cancel-music" width="32" height="32"/>
         <image name="icons8-add-96" width="48" height="48"/>
         <image name="icons8-checkmark-50" width="50" height="50"/>
@@ -572,6 +602,7 @@
         <image name="icons8-more-than-filled-50" width="50" height="50"/>
         <image name="icons8-search-32" width="32" height="32"/>
         <image name="image" width="630" height="472"/>
+        <image name="location24" width="24" height="24"/>
         <image name="review32" width="32" height="32"/>
         <image name="whitestar32" width="32" height="32"/>
     </resources>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PINRemoteImage
 
 class FavoritesTableViewController: UITableViewController {
     
@@ -55,8 +56,19 @@ class FavoritesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as! FavoritesTableViewCell
         let data = favoritesData[indexPath.row] as? (String, NSDictionary)
-        cell.testLabel.text = "id : \(data!.0)"
-        
+        let dict : [String:String] = data?.1 as! [String : String]
+        if let name = dict["name"] {
+            cell.nameLabel.text = name
+        }
+        if let address = dict["address"] {
+            cell.addressLabel.text = address
+        }
+        if let phone = dict["phone"] {
+            cell.phoneLabel.text = phone
+        }
+        if let photoUrl = dict["photoUrl"] {
+            cell.restaurantImageView.pin_setImage(from: URL(string: photoUrl))
+        }
         return cell
     }
     

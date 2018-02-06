@@ -15,6 +15,7 @@ import PINRemoteImage
 class CommentTableViewController: UITableViewController {
     var comments : [Comment] = []
     var restaurantInfos : [(Int,String)] = []
+    var url : String?
     var averageRating : Double = 0.0
     var isFavorite : Bool = false
     static var restaurantId : String! = "default"
@@ -30,8 +31,19 @@ class CommentTableViewController: UITableViewController {
         super.viewDidLoad()
         
         SVProgressHUD.show()
+        
+        //temp (temporary restaurant key)
         let places = getPlaceInfos(lat: "37.557772", lng: "127.000706")
-        let detailPlace = getDetailPlace(places[1].place_id)
+        
+        var detailPlace : DetailPlace!
+        
+        if CommentTableViewController.restaurantId.count < 10 {
+            detailPlace = getDetailPlace(places[1].place_id)
+            CommentTableViewController.restaurantId = places[1].place_id
+        } else {
+            detailPlace = getDetailPlace(CommentTableViewController.restaurantId)
+        }
+        
         if let str = detailPlace.name {
             restaurantTitleLabel.text = str
         }
@@ -47,6 +59,7 @@ class CommentTableViewController: UITableViewController {
         if let photos = detailPlace.photos {
             let urls = getPhotoUrl(photos: photos)
             if urls.count > 0 {
+                self.url = urls[0]
                 restaurantImageView.pin_setImage(from: URL(string: urls[0]))
             }
         }
@@ -79,33 +92,51 @@ class CommentTableViewController: UITableViewController {
         guard let button = sender as? UIButton else {
             return
         }
+        if restaurantInfos.count == 0 {
+            return
+        }
         
         if self.isFavorite {
             button.setImage(UIImage(named: "whitestar32"), for: .normal)
             
+            //delete
             if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
-                var dict = dataReceived as! [String:[String:String]] //temp
+                var dict = dataReceived as! [String:[String:String]]
                 dict[CommentTableViewController.restaurantId] = nil
                 NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
                 
             }
             
-            
             self.isFavorite = false
         } else {
             button.setImage(UIImage(named : "icons8-star-32.png"), for: .normal)
             
+            var infoDict :[String:String] = [:]
+            if let url = self.url {
+                infoDict["photoUrl"] = url
+            }
+            if let name = self.restaurantTitleLabel.text {
+                infoDict["name"] = name
+            }
+            
+            for (key, value) in restaurantInfos {
+                if key==0 { //addr
+                    infoDict["address"] = value
+                } else if key==1 { //phone
+                    infoDict["phone"] = value
+                }
+            }
+            
             if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
                 var dict = dataReceived as! [String:[String:String]] //temp
-                dict[CommentTableViewController.restaurantId] = ["key":"val"]
+                dict[CommentTableViewController.restaurantId] = infoDict
                 NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
                 
             } else {
                 var dict = [String:[String:String]]() //temp
-                dict[CommentTableViewController.restaurantId] = ["key":"val"]
+                dict[CommentTableViewController.restaurantId] = infoDict
                 NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
             }
-            
             
             self.isFavorite = true
         }
