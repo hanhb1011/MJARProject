@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import SVProgressHUD
 import PINRemoteImage
+import SceneKit
 
 class CommentTableViewController: UITableViewController {
     var comments : [Comment] = []
@@ -29,6 +30,7 @@ class CommentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         SVProgressHUD.show()
         
@@ -54,7 +56,11 @@ class CommentTableViewController: UITableViewController {
             restaurantInfos.append((1, str))
         }
         if let str = detailPlace.weekday_text {
-            restaurantInfos.append((2, str.reduce("", {$0+$1+"\n"})))
+            let today = Date()
+            var format = DateFormatter()
+            format.dateFormat = "e"
+            let index = (Int(format.string(from: today))! + 4) % 7
+            restaurantInfos.append((2, str[index]))
         }
         if let photos = detailPlace.photos {
             let urls = getPhotoUrl(photos: photos)
@@ -292,11 +298,9 @@ class CommentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            if restaurantInfos[indexPath.row].0 == 2 {
-                return 130
-            } else{
-                return 40
-            }
+           
+            return 40
+            
         } else {
             return 100
         }
@@ -308,7 +312,6 @@ class CommentTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as!CommentTableViewCell
             let comment = comments[indexPath.row]
             
-            cell.titleLabel.text = comment.title!
             cell.ratingLabel.text = String(comment.rating!)
             cell.dateLabel.text = comment.date!
             cell.commentLabel.text = comment.comment!
