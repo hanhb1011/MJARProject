@@ -12,7 +12,7 @@ class CommentWritingViewController: UIViewController, UITextViewDelegate, UIText
 
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+//    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var placeholderLabel: UILabel!
     
     
@@ -30,9 +30,9 @@ class CommentWritingViewController: UIViewController, UITextViewDelegate, UIText
         titleTextField!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         titleTextField.delegate = self
         
-        passwordTextField!.layer.borderWidth = 1
-        passwordTextField!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        passwordTextField.delegate = self
+//        passwordTextField!.layer.borderWidth = 1
+//        passwordTextField!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+//        passwordTextField.delegate = self
         
     }
     
@@ -67,8 +67,8 @@ class CommentWritingViewController: UIViewController, UITextViewDelegate, UIText
         
         CommentPhotoViewController.comment.comment = commentTextView.text
         CommentPhotoViewController.comment.title = titleTextField.text
-        CommentPhotoViewController.comment.password = passwordTextField.text
-        
+//        CommentPhotoViewController.comment.password = passwordTextField.text
+        CommentPhotoViewController.comment.password = "default"
     }
  
 

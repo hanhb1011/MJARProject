@@ -136,7 +136,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="AKl-RC-SSS">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AKl-RC-SSS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -174,18 +174,10 @@
                                     <rect key="frame" x="8" y="8" width="46" height="46"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZW-P0-TbL">
-                                    <rect key="frame" x="7" y="7" width="32" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="cancel-music"/>
-                                    <connections>
-                                        <action selector="exitButtonClicked:" destination="3PB-t4-SJH" eventType="touchUpInside" id="PMr-mm-nhc"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbI-dx-d8f">
-                                    <rect key="frame" x="334" y="8" width="32.000000000000114" height="31.999999999999886"/>
+                                    <rect key="frame" x="327" y="14" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="whitestar32"/>
+                                    <state key="normal" image="icons8-heart-outline-50-2"/>
                                     <connections>
                                         <action selector="likeButtonClicked:" destination="3PB-t4-SJH" eventType="touchUpInside" id="eYQ-eB-EU7"/>
                                     </connections>
@@ -197,6 +189,14 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZW-P0-TbL">
+                                    <rect key="frame" x="8" y="14" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="icons8-back-50"/>
+                                    <connections>
+                                        <action selector="exitButtonClicked:" destination="3PB-t4-SJH" eventType="touchUpInside" id="PMr-mm-nhc"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -207,7 +207,7 @@
                                 <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rik-IG-efL">
                                     <rect key="frame" x="18" y="8" width="339" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="1" green="0.5518556993" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="1" green="0.5490196078431373" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="리뷰 작성">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -389,42 +389,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JUD-TC-oA1">
-                                <rect key="frame" x="72" y="146" width="230" height="30"/>
+                                <rect key="frame" x="72" y="181" width="230" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HAH-C7-kYR">
-                                <rect key="frame" x="72" y="197" width="230" height="84"/>
+                                <rect key="frame" x="72" y="231" width="230" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="리뷰를 작성해주세요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loi-da-jZ9">
-                                <rect key="frame" x="23" y="96" width="329" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bi3-Aw-63L">
-                                <rect key="frame" x="72" y="301" width="230" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNg-Yc-v53">
-                                <rect key="frame" x="76" y="202" width="32" height="21"/>
+                                <rect key="frame" x="78" y="239" width="32" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.75041177276576432" green="0.78782788212435229" blue="0.74159005754244622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cu9-Ua-VRq">
-                                <rect key="frame" x="167" y="362" width="50" height="50"/>
+                                <rect key="frame" x="162" y="337" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icons8-more-than-filled-50">
                                     <color key="titleColor" red="0.98971826424870468" green="0.72599528971610994" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -433,6 +419,13 @@
                                     <segue destination="FBa-F6-EBG" kind="show" id="KAY-RX-sr2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="리뷰를 작성해주세요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loi-da-jZ9">
+                                <rect key="frame" x="23" y="124" width="329" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ucq-l2-Tq7"/>
@@ -440,7 +433,6 @@
                     <navigationItem key="navigationItem" id="iE7-uD-t85"/>
                     <connections>
                         <outlet property="commentTextView" destination="HAH-C7-kYR" id="RtN-tr-YcO"/>
-                        <outlet property="passwordTextField" destination="Bi3-Aw-63L" id="ORF-sT-4iF"/>
                         <outlet property="placeholderLabel" destination="MNg-Yc-v53" id="YZ3-JK-py6"/>
                         <outlet property="titleTextField" destination="JUD-TC-oA1" id="hIz-ch-b2a"/>
                     </connections>
@@ -595,16 +587,15 @@
     </scenes>
     <resources>
         <image name=" phone24" width="24" height="24"/>
-        <image name="cancel-music" width="32" height="32"/>
         <image name="icons8-add-96" width="48" height="48"/>
+        <image name="icons8-back-50" width="50" height="50"/>
         <image name="icons8-checkmark-50" width="50" height="50"/>
         <image name="icons8-heart-outline-32" width="32" height="32"/>
+        <image name="icons8-heart-outline-50-2" width="50" height="50"/>
         <image name="icons8-more-than-filled-50" width="50" height="50"/>
         <image name="icons8-search-32" width="32" height="32"/>
-        <image name="image" width="630" height="472"/>
         <image name="location24" width="24" height="24"/>
         <image name="review32" width="32" height="32"/>
-        <image name="whitestar32" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2HW-Q3-Ds8"/>

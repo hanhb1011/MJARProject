@@ -38,8 +38,8 @@ class CommentTableViewController: UITableViewController {
         var detailPlace : DetailPlace!
         
         if CommentTableViewController.restaurantId.count < 10 {
-            detailPlace = getDetailPlace(places[1].place_id)
-            CommentTableViewController.restaurantId = places[1].place_id
+            detailPlace = getDetailPlace(places[0].place_id)
+            CommentTableViewController.restaurantId = places[0].place_id
         } else {
             detailPlace = getDetailPlace(CommentTableViewController.restaurantId)
         }
@@ -71,7 +71,7 @@ class CommentTableViewController: UITableViewController {
             var dict = dataReceived as! [String:[String:String]]
             if dict[CommentTableViewController.restaurantId] != nil {
                 self.isFavorite = true
-                self.favoriteButton.setImage(UIImage(named : "icons8-star-32.png"), for: .normal)
+                self.favoriteButton.setImage(UIImage(named : "icons8-heart-outline-50-3"), for: .normal)
             }
         }
         
@@ -97,7 +97,7 @@ class CommentTableViewController: UITableViewController {
         }
         
         if self.isFavorite {
-            button.setImage(UIImage(named: "whitestar32"), for: .normal)
+            button.setImage(UIImage(named: "icons8-heart-outline-50-2"), for: .normal)
             
             //delete
             if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
@@ -109,7 +109,7 @@ class CommentTableViewController: UITableViewController {
             
             self.isFavorite = false
         } else {
-            button.setImage(UIImage(named : "icons8-star-32.png"), for: .normal)
+            button.setImage(UIImage(named : "icons8-heart-outline-50-3"), for: .normal)
             
             var infoDict :[String:String] = [:]
             if let url = self.url {
