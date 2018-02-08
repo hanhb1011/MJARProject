@@ -11,9 +11,8 @@ import UIKit
 class CommentWritingViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var commentTextView: UITextView!
-    @IBOutlet weak var titleTextField: UITextField!
-//    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var placeholderLabel: UILabel!
+    
     
     
     override func viewDidLoad() {
@@ -26,15 +25,20 @@ class CommentWritingViewController: UIViewController, UITextViewDelegate, UIText
         commentTextView.delegate = self
         commentTextView.textContainer.maximumNumberOfLines = 3
         
-        titleTextField!.layer.borderWidth = 1
-        titleTextField!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        titleTextField.delegate = self
-        
-//        passwordTextField!.layer.borderWidth = 1
-//        passwordTextField!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-//        passwordTextField.delegate = self
         
     }
+    
+    @IBAction func exitButtonClicked(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        navigationController?.popViewController(animated: false)
+    }
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
@@ -66,7 +70,7 @@ class CommentWritingViewController: UIViewController, UITextViewDelegate, UIText
         // Pass the selected object to the new view controller.
         
         CommentPhotoViewController.comment.comment = commentTextView.text
-        CommentPhotoViewController.comment.title = titleTextField.text
+        CommentPhotoViewController.comment.title = "default"
 //        CommentPhotoViewController.comment.password = passwordTextField.text
         CommentPhotoViewController.comment.password = "default"
     }

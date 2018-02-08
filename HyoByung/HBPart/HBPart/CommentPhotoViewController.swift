@@ -20,6 +20,12 @@ class CommentPhotoViewController: UIViewController {
     @IBAction func pickAnImage(_ sender: Any) {
         handleSelectedImage()
     }
+    @IBAction func exitButtonClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func backButtonClicked(_ sender: Any) {
+        navigationController?.popViewController(animated: false)
+    }
     
     @IBAction func submitClicked(_ sender: Any) {
         //show the activity indicator
