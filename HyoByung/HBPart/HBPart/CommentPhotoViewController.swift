@@ -14,6 +14,7 @@ import SVProgressHUD
 class CommentPhotoViewController: UIViewController {
     
     static var comment : Comment = Comment()
+    var image : UIImage?
     
     @IBOutlet weak var commentImageView: UIImageView!
 
@@ -42,16 +43,21 @@ class CommentPhotoViewController: UIViewController {
         ref.setValue(CommentPhotoViewController.comment.toDictionary())
         
         //image upload
-        if let image = UIImagePNGRepresentation(self.commentImageView.image!) {
-            
-            let storage = Storage.storage()
-            let storageRef = storage.reference().child(ref.key+".png")
-            storageRef.putData(image, metadata: nil){ metadata, error in
-                SVProgressHUD.dismiss()
-                self.navigationController?.dismiss(animated: true, completion: nil)
+        if let img = self.image {
+            if let imageData = UIImagePNGRepresentation(img) {
+                
+                let storage = Storage.storage()
+                let storageRef = storage.reference().child(ref.key+".png")
+                storageRef.putData(imageData, metadata: nil){ metadata, error in
+                    SVProgressHUD.dismiss()
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    
+                }
                 
             }
-            
+        } else {
+            SVProgressHUD.dismiss()
+            self.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -91,6 +97,7 @@ extension CommentPhotoViewController : UIImagePickerControllerDelegate, UINaviga
         if let originalImage = info["UIImagePickerControllerOriginalImage"] {
             let image = originalImage as! UIImage
             let resizedImage = image.crop(to: CGSize(width: 300.0, height: 300.0))
+            self.image = resizedImage
             self.commentImageView.image = resizedImage
             self.commentImageView.contentMode = .scaleToFill
         }

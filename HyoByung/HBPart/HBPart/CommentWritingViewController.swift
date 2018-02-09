@@ -11,17 +11,16 @@ import UIKit
 class CommentWritingViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var commentTextView: UITextView!
-    @IBOutlet weak var placeholderLabel: UILabel!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        placeholderLabel.text = "내용"
+//        placeholderLabel.text = "내용"
         
         commentTextView!.layer.borderWidth = 1
-        commentTextView!.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        commentTextView!.layer.borderColor = UIColor.lightGray.cgColor
         commentTextView.delegate = self
         commentTextView.textContainer.maximumNumberOfLines = 3
         
@@ -40,22 +39,14 @@ class CommentWritingViewController: UIViewController, UITextViewDelegate, UIText
     }
     
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return true }
-        let newLength = text.count + string.count - range.length
-        return newLength <= 15
-    }
-    
+
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let str = textView.text else { return true }
         let newLength = str.count + text.count - range.length
         return newLength <= 50
     }
     
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        placeholderLabel.isHidden = !commentTextView.text.isEmpty
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

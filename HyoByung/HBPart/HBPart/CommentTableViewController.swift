@@ -31,20 +31,15 @@ class CommentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if CommentTableViewController.restaurantId == "default" {
+            dismiss(animated: true, completion: nil)
+        }
         
         SVProgressHUD.show()
         
-        //temp (temporary restaurant key)
-        let places = getPlaceInfos(lat: "37.557772", lng: "127.000706")
-        
         var detailPlace : DetailPlace!
+        detailPlace = getDetailPlace(CommentTableViewController.restaurantId)
         
-        if CommentTableViewController.restaurantId.count < 10 {
-            detailPlace = getDetailPlace(places[0].place_id)
-            CommentTableViewController.restaurantId = places[0].place_id
-        } else {
-            detailPlace = getDetailPlace(CommentTableViewController.restaurantId)
-        }
         
         if let str = detailPlace.name {
             restaurantTitleLabel.text = str
@@ -299,7 +294,7 @@ class CommentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
            
-            return 40
+            return 50
             
         } else {
             return 100
@@ -357,7 +352,7 @@ class CommentTableViewController: UITableViewController {
         
         //receive data from server
         ref.observe(.value) { snapshot in
-            
+            self.comments = []
             SVProgressHUD.dismiss()
             
             guard let root : NSDictionary = snapshot.value as? NSDictionary else {
