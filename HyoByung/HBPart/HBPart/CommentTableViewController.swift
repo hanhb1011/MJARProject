@@ -163,18 +163,18 @@ class CommentTableViewController: UITableViewController {
         if let restaurants = datalist["results"] as? NSArray {
             for res in restaurants {
                 if let restaurant = res as? NSDictionary {
-                    var lat1 : String = ""
-                    var lng1 : String = ""
+                    var lat1 : Double = 0.0
+                    var lng1 : Double = 0.0
                     var place_id1 : String = ""
                     
                     if let geometry = restaurant["geometry"] as? NSDictionary {
                         if let location = geometry["location"] as? NSDictionary {
                             if let lat = location["lat"] as? Double {
-                                lat1 = String(lat)
+                                lat1 = lat
                             }
                             
                             if let lng = location["lng"] as? Double {
-                                lng1 = String(lng)
+                                lng1 = lng
                             }
                             
                         }

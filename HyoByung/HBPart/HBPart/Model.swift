@@ -31,11 +31,11 @@ class DetailPlace{
 }
 
 class PlaceInfo {
-    var lat :String
-    var lng :String
+    var lat :Double
+    var lng :Double
     var place_id :String
     
-    init(_ lat:String, _ lng:String, _ place_id:String) {
+    init(_ lat:Double, _ lng:Double, _ place_id:String) {
         self.lat = lat
         self.lng = lng
         self.place_id = place_id
