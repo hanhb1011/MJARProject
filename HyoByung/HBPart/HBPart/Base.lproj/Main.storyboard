@@ -36,6 +36,10 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVb-rk-AsZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="85" id="LWG-Xc-z88"/>
+                                                        <constraint firstAttribute="height" constant="85" id="SDd-91-OSF"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qey-nt-rLI">
                                                     <rect key="frame" x="95" y="0.0" width="197.5" height="85"/>
@@ -145,20 +149,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-Fq-edz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AKl-RC-SSS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="375" id="0Ks-3m-VCm"/>
-                                                <constraint firstAttribute="width" secondItem="AKl-RC-SSS" secondAttribute="height" multiplier="1.38889" id="POU-1a-e8s"/>
-                                                <constraint firstAttribute="height" constant="270" id="clo-cO-EoM"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                </stackView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AKl-RC-SSS">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="270" id="SEr-Ys-lam"/>
+                                        <constraint firstAttribute="width" constant="320" id="xbc-Y2-8TK"/>
+                                    </constraints>
+                                </imageView>
                                 <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E9H-RL-Fll">
                                     <rect key="frame" x="0.0" y="230" width="320" height="40"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,6 +199,13 @@
                                     </view>
                                     <blurEffect style="dark"/>
                                 </visualEffectView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RESTAURANT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryx-uo-YL5">
+                                    <rect key="frame" x="16" y="282" width="351" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUA-Xv-bgy">
                                     <rect key="frame" x="8" y="8" width="46" height="46"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -214,13 +218,13 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Jor-VT-Hcr">
-                                                <rect key="frame" x="5" y="2.5" width="155" height="40"/>
+                                                <rect key="frame" x="5" y="2.5" width="160" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZW-P0-TbL">
-                                                        <rect key="frame" x="0.0" y="2.5" width="35" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="Dyr-ei-Vrm"/>
-                                                            <constraint firstAttribute="width" constant="35" id="YcG-h3-BYr"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Dyr-ei-Vrm"/>
+                                                            <constraint firstAttribute="width" constant="40" id="YcG-h3-BYr"/>
                                                         </constraints>
                                                         <state key="normal" image="icons8-back-50"/>
                                                         <connections>
@@ -228,7 +232,7 @@
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="center" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Urd-GY-uV8">
-                                                        <rect key="frame" x="35" y="0.0" width="120" height="40"/>
+                                                        <rect key="frame" x="40" y="0.0" width="120" height="40"/>
                                                         <subviews>
                                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rik-IG-efL">
                                                                 <rect key="frame" x="0.0" y="5" width="70" height="30"/>
@@ -272,22 +276,20 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Jor-VT-Hcr" secondAttribute="trailing" constant="5" id="U9t-la-Za4"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jor-VT-Hcr" secondAttribute="trailing" id="U9t-la-Za4"/>
                                             <constraint firstItem="Jor-VT-Hcr" firstAttribute="top" secondItem="WkA-Qc-csZ" secondAttribute="top" constant="2.5" id="hHA-tK-1Mp"/>
-                                            <constraint firstItem="Jor-VT-Hcr" firstAttribute="leading" secondItem="WkA-Qc-csZ" secondAttribute="leading" constant="5" id="mIm-FA-t79"/>
+                                            <constraint firstItem="Jor-VT-Hcr" firstAttribute="leading" secondItem="WkA-Qc-csZ" secondAttribute="leading" id="mIm-FA-t79"/>
                                         </constraints>
                                     </view>
                                     <blurEffect style="dark"/>
                                 </visualEffectView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RESTAURANT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryx-uo-YL5">
-                                    <rect key="frame" x="16" y="282" width="351" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="AKl-RC-SSS" firstAttribute="top" secondItem="4hQ-Cl-1g9" secondAttribute="top" id="mGR-LJ-tfW"/>
+                                <constraint firstAttribute="trailing" secondItem="AKl-RC-SSS" secondAttribute="trailing" id="xcz-XO-spE"/>
+                                <constraint firstItem="AKl-RC-SSS" firstAttribute="leading" secondItem="4hQ-Cl-1g9" secondAttribute="leading" id="yln-RK-I6C"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantCell" id="v6c-Ph-VZ0" customClass="RestaurantTableViewCell" customModule="HBPart" customModuleProvider="target">
@@ -415,7 +417,7 @@ FF</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBx-QS-d5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="223.19999999999999" y="43.628185907046479"/>
+            <point key="canvasLocation" x="223.125" y="43.309859154929576"/>
         </scene>
         <!--Rating View Controller-->
         <scene sceneID="DTv-fD-CBn">
@@ -815,7 +817,7 @@ FF</string>
         <!--Tab Bar Controller-->
         <scene sceneID="qUs-2F-KFc">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gba-Aq-RrY" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gba-Aq-RrY" customClass="TabBarController" customModule="HBPart" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="7XA-jz-vYb">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

@@ -38,7 +38,7 @@ class FavoritesTableViewController: UITableViewController {
 
     func getFavoritesData() {
         self.favoritesData = []
-        let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!+"restaurantData.dat"
+        let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!+"/restaurantData.dat"
         
         if let dataReceived = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
             let dict = dataReceived as! [String:[String:String]]

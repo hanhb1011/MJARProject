@@ -20,7 +20,7 @@ class CommentTableViewController: UITableViewController {
     var averageRating : Double = 0.0
     var isFavorite : Bool = false
     static var restaurantId : String! = "default"
-    let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!+"restaurantData.dat"
+    let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!+"/restaurantData.dat"
     
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet var restaurantTitleLabel: UILabel!
@@ -89,7 +89,7 @@ class CommentTableViewController: UITableViewController {
     }
     
     @IBAction func likeButtonClicked(_ sender: Any) {
-        
+        print(filePath)
         guard let button = sender as? UIButton else {
             return
         }
@@ -105,7 +105,7 @@ class CommentTableViewController: UITableViewController {
                 var dict = dataReceived as! [String:[String:String]]
                 dict[CommentTableViewController.restaurantId] = nil
                 NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
-                
+                print(dataReceived)
             }
             
             self.isFavorite = false
@@ -138,7 +138,7 @@ class CommentTableViewController: UITableViewController {
                 dict[CommentTableViewController.restaurantId] = infoDict
                 NSKeyedArchiver.archiveRootObject(dict, toFile: filePath)
             }
-            
+            print(infoDict)
             self.isFavorite = true
         }
         
@@ -146,56 +146,10 @@ class CommentTableViewController: UITableViewController {
     }
     
     
-    
-    func getPlaceInfos(lat: String, lng: String) -> [PlaceInfo] {
-        var placeInfos :[PlaceInfo] = []
-        var fullUrl :String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&language=ko&radius=500&type=restaurant&key=AIzaSyCzY5m4aopjsOKjpDJOEFMLdY9Tl0ZlF2Y"
-        
-        let url = URL(string: fullUrl)
-        var datalist = NSDictionary()
-        
-        do {
-            datalist = try JSONSerialization.jsonObject(with:Data(contentsOf : url!), options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-        }  catch {
-            print("Error loading Data")
-        }
-        
-        if let restaurants = datalist["results"] as? NSArray {
-            for res in restaurants {
-                if let restaurant = res as? NSDictionary {
-                    var lat1 : Double = 0.0
-                    var lng1 : Double = 0.0
-                    var place_id1 : String = ""
-                    
-                    if let geometry = restaurant["geometry"] as? NSDictionary {
-                        if let location = geometry["location"] as? NSDictionary {
-                            if let lat = location["lat"] as? Double {
-                                lat1 = lat
-                            }
-                            
-                            if let lng = location["lng"] as? Double {
-                                lng1 = lng
-                            }
-                            
-                        }
-                    }
-                    
-                    if let place_id = restaurant["place_id"] as? String {
-                        place_id1 = place_id
-                    }
-                    
-                    placeInfos += [PlaceInfo(lat1, lng1, place_id1)]
-                }
-            }
-        }
-        
-        
-        return placeInfos
-    }
-    
+  
     func getDetailPlace(_ place_id : String) -> DetailPlace {
         let place = DetailPlace()
-        let fullUrl :String = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&language=ko&key=AIzaSyBmMU_ZnsgsjuCk5VAEoeRMt8DzMtj_Z5M"
+        let fullUrl :String = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&language=ko&key="+ARViewController.key
         let url = URL(string: fullUrl)
         var datalist = NSDictionary()
         
@@ -262,7 +216,13 @@ class CommentTableViewController: UITableViewController {
     func getPhotoUrl(photos:[Photo]) -> [String] {
         var urls :[String] = []
         for photo in photos {
-            let url :String = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=" + photo.width + "&maxheight=" + photo.height +  "&photoreference=" + photo.photo_reference + "&key=AIzaSyCzY5m4aopjsOKjpDJOEFMLdY9Tl0ZlF2Y"
+            var url :String = ""
+            if Int(photo.width)! > 1000 && Int(photo.height)! > 1000 {
+                url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=" + photo.photo_reference + "&key="+ARViewController.key
+            }else {
+                url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=" + photo.width + "&maxheight=" + photo.height +  "&photoreference=" + photo.photo_reference + "&key=AIzaSyB-jtfEKziLML6XohRb_DndnA0mlZoXaZ0"
+            }
+            //let url :String = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=" + photo.width + "&maxheight=" + photo.height +  "&photoreference=" + photo.photo_reference + "&key=AIzaSyCzY5m4aopjsOKjpDJOEFMLdY9Tl0ZlF2Y"
             urls.append(url)
         }
         

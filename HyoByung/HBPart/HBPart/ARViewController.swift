@@ -11,8 +11,11 @@ import ARKit
 import SceneKit
 import CoreLocation
 import MapKit
+import PINRemoteImage
 
 class ARViewController: UIViewController {
+    
+    static let key :String = "AIzaSyChdWCTPRAQbk3y9Vx03R6hY2JABlbnoVQ"
     
     var sceneLocationView = SceneLocationView()
     
@@ -22,50 +25,26 @@ class ARViewController: UIViewController {
         
     }
     
+    var locationAnnotationNodes :[LocationAnnotationNode] = []
+    
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        print("arviewcontroller self : \(self)")
         
         // Do any additional setup after loading the view.
         
-        //print("위치 \(sceneLocationView.currentLocation()?.coordinate.latitude)")
         if let currentLocation = sceneLocationView.currentLocation() {
-            //print("kim sung soo")
-            let lat = currentLocation.coordinate.latitude
-            let lng = currentLocation.coordinate.longitude
-            let altitude = currentLocation.altitude
-            
-            let places = getPlaceInfos(lat: lat, lng: lng)
-            if places.count > 0 {
-                for place in places {
-                    let coordinate = CLLocationCoordinate2D(latitude: place.lat, longitude: place.lng)
-                    let location = CLLocation(coordinate: coordinate, altitude: altitude)
-                    let image = UIImage(named: "pin")!
-                    let annotationNode = LocationAnnotationNode(location: location, image: image, r_id: place.place_id)
-                    
-                    sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
-                    //sceneLocationView.update
-                }
-                sceneLocationView.run()
-                view.addSubview(sceneLocationView)
-            }
+            updateNode(location: currentLocation)
+            view.addSubview(sceneLocationView)
         }
-    }
-    
-    static func updateNodes(){
-        
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first as! UITouch
         if(touch.view == self.sceneLocationView){
-            print("touch working")
             let viewTouchLocation:CGPoint = touch.location(in: sceneLocationView)
             guard let result = sceneLocationView.hitTest(viewTouchLocation, options: nil).first else {
                 return
@@ -116,9 +95,10 @@ class ARViewController: UIViewController {
         }
     }
     
+    
     func getPlaceInfos(lat: Double, lng: Double) -> [PlaceInfo] {
         var placeInfos :[PlaceInfo] = []
-        var fullUrl :String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lng)&language=ko&radius=500&type=restaurant&key=AIzaSyCzY5m4aopjsOKjpDJOEFMLdY9Tl0ZlF2Y"
+        var fullUrl :String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lng)&language=ko&radius=100&type=restaurant&key="+ARViewController.key
         
         let url = URL(string: fullUrl)
         var datalist = NSDictionary()
@@ -152,7 +132,31 @@ class ARViewController: UIViewController {
                     if let place_id = restaurant["place_id"] as? String {
                         place_id1 = place_id
                     }
-                    placeInfos += [PlaceInfo(lat1, lng1, place_id1)]
+                    
+                    var photos1 :[Photo] = []
+                    if let photos = restaurant["photos"] as? NSArray {
+                        for ph in photos {
+                            if let photo = ph as? NSDictionary {
+                                var height1 :String? = nil
+                                if let height = photo["height"] as? Int {
+                                    height1 = String(height)
+                                }
+                                var width1 :String? = nil
+                                if let width = photo["width"] as? Int {
+                                    width1 = String(width)
+                                }
+                                var photo_reference1 :String? = nil
+                                if let photo_reference = photo["photo_reference"] as? String {
+                                    photo_reference1 = photo_reference
+                                }
+                                
+                                if let height = height1, let width = width1, let photo_reference = photo_reference1 {
+                                    photos1.append(Photo(height, width, photo_reference))
+                                }
+                            }
+                        }
+                    }
+                    placeInfos += [PlaceInfo(lat1, lng1, place_id1, photos1)]
                 }
             }
         }
@@ -161,7 +165,31 @@ class ARViewController: UIViewController {
         return placeInfos
     }
     
+    
+    func getPhotoUrl2(photos:[Photo]) -> [String] {
+        var urls :[String] = []
+        for photo in photos {
+            let url: String
+            
+            if Int(photo.width)! > 500 && Int(photo.height)! > 500 {
+                url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=500&photoreference=" + photo.photo_reference + "&key="+ARViewController.key
+            } else {
+                url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=" + photo.width + "&maxheight=" + photo.height +  "&photoreference=" + photo.photo_reference + "&key="+ARViewController.key
+            }
+
+            urls.append(url)
+        }
+        
+        return urls
+    }
+    
     func updateNode(location: CLLocation) {
+        
+        for locationNode in locationAnnotationNodes {
+            sceneLocationView.removeLocationNode(locationNode: locationNode)
+        }
+        locationAnnotationNodes.removeAll()
+        
         
         let lat = location.coordinate.latitude //currentLocation.coordinate.latitude
         let lng = location.coordinate.longitude //currentLocation.coordinate.longitude
@@ -172,14 +200,33 @@ class ARViewController: UIViewController {
             for place in places {
                 let coordinate = CLLocationCoordinate2D(latitude: place.lat, longitude: place.lng)
                 let location = CLLocation(coordinate: coordinate, altitude: altitude)
-                let image = UIImage(named: "image")!
-                let annotationNode = LocationAnnotationNode(location: location, image: image, r_id: place.place_id)
+                //////////
+                var image : UIImage?
+                image = UIImage(named: "pin")!
+//                if place.photos.count > 0 {
+//
+//                    print("ininininininininininininininin")
+//                    let urls = getPhotoUrl2(photos: place.photos)
+//                    let imageView = UIImageView()
+//                    imageView.image = UIImage(named: "pin")
+//
+//                    if urls.count > 0 {
+//                        print("in2in2in2in2in2in2in2in2in2in2in2in2")
+//                        imageView.pin_setImage(from: URL(string: urls[0]))
+//                        image = imageView.image
+//                        image?.crop(to: CGSize(width: 100.0, height: 100.0))
+//                    }
+//                } else {
+//                    image = UIImage(named: "pin")!
+//                }
                 
+                let annotationNode = LocationAnnotationNode(location: location, image: image!, r_id: place.place_id)
+                locationAnnotationNodes.append(annotationNode)
                 sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
             }
-            sceneLocationView.run()
-            view.addSubview(sceneLocationView)
         }
+        
+        sceneLocationView.run()
     }
     
 }
@@ -191,7 +238,7 @@ class ARViewController: UIViewController {
 @available(iOS 11.0, *)
 extension ARViewController: LocationManagerDelegate {
     func locationManagerDidUpdateLocation(_ locationManager: LocationManager, location: CLLocation) {
-        print("locationManagerDidUpdateLocation in arviewcontroller")
+
     }
     
     func locationManagerDidUpdateHeading(_ locationManager: LocationManager, heading: CLLocationDirection, accuracy: CLLocationAccuracy) {
@@ -199,7 +246,9 @@ extension ARViewController: LocationManagerDelegate {
     }
     
     func locationaManagerDidUpdateCurrentLocation(_ locationManager: LocationManager, location: CLLocation) {
-        print("god hyo byung")
+//        sceneLocationView.scene.rootNode.enumerateChildNodes { (node, stop) in
+//            node.removeFromParentNode() }
+        
         updateNode(location: location)
     }
     

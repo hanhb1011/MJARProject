@@ -69,7 +69,7 @@ open class LocationAnnotationNode: LocationNode {
     ///Setting to true causes annotation nodes to scale like a regular node
     ///Scaling relative to distance may be useful with local navigation-based uses
     ///For landmarks in the distance, the default is correct
-    public var scaleRelativeToDistance = false
+    public var scaleRelativeToDistance = true
     
     
     

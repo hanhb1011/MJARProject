@@ -494,7 +494,6 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
 @available(iOS 11.0, *)
 extension SceneLocationView: LocationManagerDelegate {
     func locationManagerDidUpdateLocation(_ locationManager: LocationManager, location: CLLocation) {
-        print("locationManagerDidUpdateLocation in scenelocationview")
         addSceneLocationEstimate(location: location)
     }
     

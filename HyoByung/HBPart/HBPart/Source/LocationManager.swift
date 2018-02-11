@@ -32,7 +32,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         self.locationManager = CLLocationManager()
         self.locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        self.locationManager!.distanceFilter = 5
+        self.locationManager!.distanceFilter = 50
         self.locationManager!.headingFilter = kCLHeadingFilterNone
         self.locationManager!.pausesLocationUpdatesAutomatically = false
         self.locationManager!.delegate = self
@@ -69,12 +69,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             self.delegate?.locationManagerDidUpdateLocation(self, location: location)
         }
         
-        print("in call back")
-        
         if let location = manager.location {
-            print("tell the delegate")
             self.delegate?.locationaManagerDidUpdateCurrentLocation(self, location: location)
-            print("locationmanager : \(self.delegate)")
         }
         
         

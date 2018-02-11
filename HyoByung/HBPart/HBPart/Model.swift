@@ -34,11 +34,12 @@ class PlaceInfo {
     var lat :Double
     var lng :Double
     var place_id :String
-    
-    init(_ lat:Double, _ lng:Double, _ place_id:String) {
+    var photos :[Photo]
+    init(_ lat:Double, _ lng:Double, _ place_id:String, _ photos:[Photo]) {
         self.lat = lat
         self.lng = lng
         self.place_id = place_id
+        self.photos = photos
     }
 }
 
