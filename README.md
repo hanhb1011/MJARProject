@@ -13,7 +13,9 @@
 
 # MJGO #
 
-![Screenshot](AR view.png)
+<p align="center">
+  <img src="docs/images/AR view.png" width="350"/>
+</p>
 
 
 
