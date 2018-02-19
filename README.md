@@ -1,7 +1,7 @@
 # MJARProject
 
 ## To-Do ##
-- [x] Firebase
+- [x] Server
 - [x] API
 - [x] AR
 
@@ -23,9 +23,6 @@
 
 ## Description ##
 
-You can find restaurant through this app easily. 
+Find restaurant through Augmented Reality!
 
-You can register favorite restaurant.
-
-You can register and see review about restaurant.
-
+You can register favorite restaurants and see reviews about the restaurant.
