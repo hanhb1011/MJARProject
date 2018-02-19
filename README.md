@@ -12,6 +12,11 @@ Find restaurant through Augmented Reality!
 
 You can register favorite restaurants and see reviews about the restaurant.
 
+증강현실을 이용하여 맛집을 찾아보세요!
+
+좋아하는 맛집을 즐겨찾기에 등록하고 맛집 리뷰를 볼 수 있습니다.
+
+
 ## To-Do ##
 - [x] Server
 - [x] API
