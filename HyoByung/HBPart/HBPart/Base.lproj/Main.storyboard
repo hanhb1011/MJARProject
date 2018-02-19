@@ -121,13 +121,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="19K-qM-f4l">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <rect key="frame" x="150" y="217" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치와 인터넷 연결울 확인하십시오." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWZ-Mu-cLu">
+                                <rect key="frame" x="34" y="273.5" width="252.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aWZ-Mu-cLu" firstAttribute="centerX" secondItem="fjq-ED-H7X" secondAttribute="centerX" id="3TT-ru-70I"/>
+                            <constraint firstItem="aWZ-Mu-cLu" firstAttribute="centerY" secondItem="fjq-ED-H7X" secondAttribute="centerY" id="dNC-57-Smu"/>
                             <constraint firstItem="19K-qM-f4l" firstAttribute="centerX" secondItem="fjq-ED-H7X" secondAttribute="centerX" id="fes-Bf-xOO"/>
-                            <constraint firstItem="19K-qM-f4l" firstAttribute="centerY" secondItem="fjq-ED-H7X" secondAttribute="centerY" id="krS-7R-hr1"/>
+                            <constraint firstItem="19K-qM-f4l" firstAttribute="centerY" secondItem="fjq-ED-H7X" secondAttribute="centerY" multiplier="0.8" id="krS-7R-hr1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JFU-Ng-bG5"/>
                     </view>
@@ -135,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mer-9X-5hL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-986.39999999999998" y="727.28635682158927"/>
+            <point key="canvasLocation" x="-988.125" y="726.76056338028172"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="Cfz-ro-pkd">
@@ -427,7 +435,7 @@ FF</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8U-Ak-9hG" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E8U-Ak-9hG" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="50" y="193" width="220" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
