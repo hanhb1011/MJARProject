@@ -13,10 +13,15 @@
 
 # MJGO #
 
+![Screenshot](AR view.png)
+
 
 
 ## Description ##
 
 You can find restaurant through this app easily. 
+
 You can register favorite restaurant.
+
 You can register and see review about restaurant.
+
