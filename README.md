@@ -1,4 +1,4 @@
-# 맛집GO #
+# MatJip GO #
 
 <p align="center">
   <img src="docs/images/AR view.png" width="250"/>
@@ -8,7 +8,7 @@
 
 ## Description ##
 
-Find restaurant through Augmented Reality!
+Find restaurants through Augmented Reality!
 
 You can register favorite restaurants and see reviews about the restaurant.
 
