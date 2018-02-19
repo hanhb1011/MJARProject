@@ -16,6 +16,7 @@ You can register favorite restaurants and see reviews about the restaurant.
 
 좋아하는 맛집을 즐겨찾기에 등록하고 맛집 리뷰를 볼 수 있습니다.
 
+\#AR \#Hole in the wall \#Restaurant \#Review
 
 ## To-Do ##
 - [x] Server
