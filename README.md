@@ -14,9 +14,9 @@
 # MJGO #
 
 <p align="center">
-  <img src="docs/images/AR view.png" width="350"/>
-  <img src="docs/images/detail page.png" width="350"/>
-    <img src="docs/images/favorites.png" width="350"/>
+  <img src="docs/images/AR view.png" width="250"/>
+  <img src="docs/images/detail page.png" width="250"/>
+  <img src="docs/images/favorites.png" width="250"/>
 </p>
 
 
